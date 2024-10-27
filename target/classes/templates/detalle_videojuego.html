@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle Videojuego</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Google Font for Video Game Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1d;
+            color: #c5c6c7;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .container {
+            max-width: 700px;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px #00ffff;
+            margin-top: 30px;
+        }
+        .card {
+            background-color: #0b0c10;
+            border: 2px solid #45a29e;
+        }
+        .card-title, .card-text {
+            color: #c5c6c7;
+        }
+        .btn-primary {
+            background-color: #45a29e;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #66fcf1;
+            color: #0b0c10;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Detalle del Videojuego</h2>
+    <div class="card mt-4">
+        <img th:src="${videojuego.urlImagen}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${videojuego.nombre}"></h5>
+            <p class="card-text">Precio: S/<span th:text="${videojuego.precio}"></span></p>
+            <p class="card-text">Stock: <span th:text="${videojuego.stock}"></span> unidades</p>
+        </div>
+    </div>
+    <a th:href="@{/menu}" class="btn btn-primary mt-3">Volver</a>
+</div>
+</body>
+</html>

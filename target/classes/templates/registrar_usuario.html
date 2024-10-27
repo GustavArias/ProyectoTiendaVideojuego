@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Google Font for Video Game Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <title>Registro Gamer</title>
+
+    <style>
+        body {
+            background-color: #1a1a1d;
+            color: #c5c6c7;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .container {
+            max-width: 700px;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px #00ffff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #66fcf1;
+            text-align: center;
+        }
+        label {
+            color: #c5c6c7;
+            font-size: 12px;
+        }
+        .form-control, .form-control-file {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            border: 2px solid #45a29e;
+        }
+        .form-control:focus, .form-control-file:focus {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            box-shadow: 0 0 5px #66fcf1;
+            border-color: #66fcf1;
+        }
+        .btn-primary, .btn-secondary {
+            background-color: #45a29e;
+            border: none;
+            font-size: 12px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            background-color: #66fcf1;
+            color: #0b0c10;
+        }
+        .alert {
+            font-size: 12px;
+            text-align: center;
+            color: #0b0c10;
+            background-color: #66fcf1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div th:if="${registroCorrecto}" class="alert alert-success mt-4" role="alert">
+            <span th:text="${registroCorrecto}"></span>
+        </div>
+        <h3>Registrar Usuario</h3>
+        <form th:action="@{/registrar_usuario}" method="post" th:object="${usuario}" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom01">Correo</label>
+                    <input th:field="*{correo}" type="email" class="form-control" id="validationCustom01" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom02">Nombres</label>
+                    <input th:field="*{nombre}" type="text" class="form-control" id="validationCustom02"  required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Celular</label>
+                    <input th:field="*{celular}" type="number" class="form-control" id="validationCustom03" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Password</label>
+                    <input th:field="*{password}" type="password" class="form-control" id="validationCustom05" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Foto Usuario</label>
+                <input name="foto" accept="image/*" required type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            
+            <a class="btn btn-secondary" href="/">Ir al Login</a>
+            <button class="btn btn-primary" type="submit">Registrar usuario</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
