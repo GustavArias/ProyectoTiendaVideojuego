@@ -30,9 +30,26 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public boolean validarUsuario(UsuarioEntity usuarioEntity) {
+	public boolean validarUsuario(UsuarioEntity usuarioFormulario) {
 		
-		return false;
+		UsuarioEntity usuarioEncontrado = usuarioRepository.findByCorreo(usuarioFormulario.getCorreo());
+	
+		if(usuarioEncontrado == null) {
+			return false;
+		}
+	
+		if(!Utilitarios.checkPassword(usuarioFormulario.getPassword(),
+				usuarioEncontrado.getPassword())) {
+			return false;
+		}
+
+	return true;
+	}
+
+	@Override
+	public UsuarioEntity buscarUsuarioPorCorreo(String correo) {
+
+		return usuarioRepository.findByCorreo(correo);
 	}
 
 }

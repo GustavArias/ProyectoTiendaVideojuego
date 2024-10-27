@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Videojuego</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Google Font for Video Game Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1d;
+            color: #c5c6c7;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .container {
+            max-width: 700px;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px #00ffff;
+            margin-top: 30px;
+        }
+        .form-control {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            border: 2px solid #45a29e;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 5px #66fcf1;
+            border-color: #66fcf1;
+        }
+        .btn-primary, .btn-secondary {
+            background-color: #45a29e;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            background-color: #66fcf1;
+            color: #0b0c10;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Editar Videojuego</h2>
+    <form th:action="@{/editar_juego}" th:object="${videojuego}" method="post" class="mt-4">
+        <input type="hidden" th:field="*{videojuegoId}">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="number" th:field="*{precio}" class="form-control" id="precio" required>
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="number" th:field="*{stock}" class="form-control" id="stock" required>
+        </div>
+        <div class="form-group">
+            <label for="urlImagen">URL Imagen</label>
+            <input type="text" th:field="*{urlImagen}" class="form-control" id="urlImagen" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/menu}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
